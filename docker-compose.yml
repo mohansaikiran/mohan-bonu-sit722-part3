@@ -1,0 +1,25 @@
+# Your Solution
+
+services:
+  book_catalog:
+    image: book_catalog
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    container_name: catalog
+    ports:
+      - "8000:8000" 
+    environment:
+      - DATABASE_URL=postgresql://mohandb_user:qb4uIrvAnoWQl6nBLPE4BqDCBr1BctOS@dpg-crlc3cbtq21c73ec93f0-a.oregon-postgres.render.com/mohandb
+
+  inventory_management:
+    image: inventory
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    container_name: inventory
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://mohandb_user:qb4uIrvAnoWQl6nBLPE4BqDCBr1BctOS@dpg-crlc3cbtq21c73ec93f0-a.oregon-postgres.render.com/mohandb
+
